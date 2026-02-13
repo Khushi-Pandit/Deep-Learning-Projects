@@ -1,0 +1,9 @@
+# dataset
+MRI-Brain Tumor/
+*.tif
+*.png
+*.jpg
+
+# python
+__pycache__/
+*.pyc

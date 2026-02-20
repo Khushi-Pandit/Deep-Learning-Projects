@@ -1,0 +1,52 @@
+{
+  "boundary_accuracy": {
+    "nucleus": {
+      "kmeans": {
+        "circularity": 0.9033202465407981,
+        "contour_smoothness": 13.911312914757847,
+        "boundary_pixels": 274,
+        "area_pixels": 5401
+      },
+      "fcm": {
+        "circularity": 0.46068177164910884,
+        "contour_smoothness": 27.277768271171034,
+        "boundary_pixels": 794,
+        "area_pixels": 23169
+      }
+    },
+    "cytoplasm": {
+      "kmeans": {
+        "circularity": 0.008762819036815849,
+        "contour_smoothness": 1434.0557029786646,
+        "boundary_pixels": 6377,
+        "area_pixels": 28361
+      },
+      "fcm": {
+        "circularity": 0.012567453908010912,
+        "contour_smoothness": 999.9138014010693,
+        "boundary_pixels": 1962,
+        "area_pixels": 3850
+      }
+    }
+  },
+  "extended_metrics": {
+    "nucleus": {
+      "hausdorff_distance": 151.321,
+      "iou_kmeans_vs_fcm": 0.2034,
+      "dice_kmeans_vs_fcm": 0.338,
+      "km_mean_intensity": 79.56,
+      "fcm_mean_intensity": 177.21,
+      "km_area_pixels": 5520,
+      "fcm_area_pixels": 27139
+    },
+    "cytoplasm": {
+      "hausdorff_distance": 4.243,
+      "iou_kmeans_vs_fcm": 0.7808,
+      "dice_kmeans_vs_fcm": 0.8769,
+      "km_mean_intensity": 199.51,
+      "fcm_mean_intensity": 199.47,
+      "km_area_pixels": 24891,
+      "fcm_area_pixels": 19436
+    }
+  }
+}

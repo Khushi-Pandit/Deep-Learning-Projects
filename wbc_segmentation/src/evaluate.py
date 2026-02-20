@@ -64,7 +64,6 @@ def save_metrics_json(comparison, extended, output_path="results/metrics.json"):
 
 
 def run_evaluation(image_path=None, output_dir="results"):
-    print("\n=== Extended Evaluation ===")
 
     if image_path and os.path.exists(image_path):
         from segmentation import load_image

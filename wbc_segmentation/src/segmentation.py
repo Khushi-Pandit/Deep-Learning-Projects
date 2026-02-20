@@ -1,8 +1,3 @@
-"""
-White Blood Cell Segmentation using K-Means and Fuzzy C-Means Clustering
-Segments WBC nucleus and cytoplasm regions and compares boundary accuracy.
-"""
-
 import os
 import numpy as np
 import cv2
@@ -236,45 +231,31 @@ def create_synthetic_wbc(size=256):
 
 
 def run_segmentation_pipeline(image_path=None, n_clusters=3, output_dir="results"):
-    print("=" * 60)
-    print("  WBC Segmentation Pipeline")
-    print("=" * 60)
 
     if image_path and os.path.exists(image_path):
-        print(f"[1] Loading image: {image_path}")
         img = load_image(image_path)
     else:
-        print("[1] Generating synthetic WBC image …")
         img = create_synthetic_wbc(256)
 
-    print(f"    Shape: {img.shape}")
-    print("[2] Preprocessing …")
     img_proc, features = preprocess_image(img)
 
-    print("[3] Running K-Means …")
     km_labels_flat, km_model = kmeans_segmentation(features, n_clusters)
     km_label_img = features_to_label_image(km_labels_flat, img.shape)
 
-    print("[4] Running Fuzzy C-Means …")
     fcm_labels_flat, fcm_model = fcm_segmentation(features, n_clusters)
     fcm_label_img = features_to_label_image(fcm_labels_flat, img.shape)
 
-    print("[5] Identifying WBC regions …")
     km_regions  = identify_wbc_regions(km_label_img,  img)
     fcm_regions = identify_wbc_regions(fcm_label_img, img)
 
-    print("[6] Computing metrics …")
     comparison = compare_methods(km_regions, fcm_regions)
 
-    print("[7] Visualising …")
     os.makedirs(output_dir, exist_ok=True)
     visualize_results(img, km_regions, fcm_regions, km_label_img, fcm_label_img, comparison,
                       output_path=os.path.join(output_dir, "comparison.png"))
     visualize_comparison_metrics(comparison, output_path=os.path.join(output_dir, "metrics.png"))
 
-    print("\n" + "=" * 60)
     print("  RESULTS SUMMARY")
-    print("=" * 60)
     for region, data in comparison.items():
         print(f"\n  [{region.upper()}]")
         for method, mets in data.items():

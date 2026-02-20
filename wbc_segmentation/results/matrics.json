@@ -1,0 +1,66 @@
+{
+  "boundary_accuracy": {
+    "nucleus": {
+      "kmeans": {
+        "circularity": 0.9035,
+        "contour_smoothness": 13.91,
+        "boundary_pixels": 274,
+        "area_pixels": 5362
+      },
+      "fcm": {
+        "circularity": 0.6121,
+        "contour_smoothness": 20.53,
+        "boundary_pixels": 688,
+        "area_pixels": 23041
+      }
+    },
+    "cytoplasm": {
+      "kmeans": {
+        "circularity": 0.0374,
+        "contour_smoothness": 336.37,
+        "boundary_pixels": 4386,
+        "area_pixels": 18093
+      },
+      "fcm": {
+        "circularity": 0.0615,
+        "contour_smoothness": 204.44,
+        "boundary_pixels": 569,
+        "area_pixels": 3151
+      }
+    }
+  },
+  "extended_metrics": {
+    "nucleus": {
+      "hausdorff_distance": 147.82,
+      "iou_kmeans_vs_fcm": 0.2127,
+      "dice_kmeans_vs_fcm": 0.3510,
+      "km_mean_intensity": 94.31,
+      "fcm_mean_intensity": 137.45,
+      "km_area_pixels": 5362,
+      "fcm_area_pixels": 23041
+    },
+    "cytoplasm": {
+      "hausdorff_distance": 215.44,
+      "iou_kmeans_vs_fcm": 0.0891,
+      "dice_kmeans_vs_fcm": 0.1638,
+      "km_mean_intensity": 186.72,
+      "fcm_mean_intensity": 178.94,
+      "km_area_pixels": 18093,
+      "fcm_area_pixels": 3151
+    }
+  },
+  "metadata": {
+    "image": "synthetic_wbc_256x256",
+    "n_clusters": 3,
+    "feature_vector": ["R", "G", "B", "H", "S"],
+    "kmeans_params": { "n_init": 10, "max_iter": 300, "random_state": 42 },
+    "fcm_params": { "m": 2.0, "max_iter": 150, "tol": 0.0001 },
+    "metric_descriptions": {
+      "circularity": "4*pi*area / perimeter^2  (1.0 = perfect circle)",
+      "contour_smoothness": "perimeter^2 / area  (lower = smoother)",
+      "hausdorff_distance": "max of min-distances between K-Means and FCM contours",
+      "iou_kmeans_vs_fcm": "intersection-over-union between both masks",
+      "dice_kmeans_vs_fcm": "2*|intersection| / (|A|+|B|)"
+    }
+  }
+}
